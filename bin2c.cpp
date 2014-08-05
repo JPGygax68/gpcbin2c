@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 				input_file = arg.substr(8);
 			}
 			else if (arg == "-o") {
-				if (++i == argc) throw runtime_error("-i must be followed by filename");
+				if (++i == argc) throw runtime_error("-o must be followed by filename");
 				output_file = argv[i];
 			}
 			else if (arg.substr(0, 8) == "--output=") {

@@ -1,0 +1,2 @@
+# This project being an executable, the target definitions are all we need
+include("@TARGETSET_CMAKE_DIR@/@TARGET_SET@-targets.cmake")

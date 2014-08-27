@@ -28,8 +28,8 @@ int main(int argc, char *argv[])
 				if (++i == argc) throw runtime_error("-i must be followed by filename");
 				output_file = argv[i];
 			}
-			else if (arg.substr(0, 8) == "--output=") {
-				output_file = arg.substr(8);
+			else if (arg.substr(0, 9) == "--output=") {
+				output_file = arg.substr(9);
 			}
 		}
 

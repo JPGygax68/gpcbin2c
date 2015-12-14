@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.0)
 # Project + basics
 #
 
-project(GPCBin2C)
+project(gpcbin2c)
 
 add_executable(${PROJECT_NAME} bin2c.cpp)
 

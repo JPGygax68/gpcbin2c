@@ -9,8 +9,8 @@ struct Params
     std::string input_file;
     std::string output_file;
     std::string const_name;
-    std::string header_file_name;
-    std::string source_file_name;
+    std::string header_file;
+    std::string source_file;
 
     void parse(int argc, char *argv[])
     {
@@ -50,6 +50,24 @@ struct Params
             {
                 const_name = arg.substr(8);
             }
+            else if (arg == "-h")                       // short option to specify header file name
+            {
+                if (++i == argc) throw runtime_error("-h must be followed by header file name/path");
+                header_file = argv[i];
+            }
+            else if (arg.substr(0, 9) == "--header=")    // ditto long form
+            {
+                header_file = arg.substr(9);
+            }
+            else if (arg == "-s")                       // short option to specify source file name
+            {
+                if (++i == argc) throw runtime_error("-s must be followed by source file name/path");
+                source_file = argv[i];
+            }
+            else if (arg.substr(0, 9) == "--source=")    // ditto long form
+            {
+                source_file = arg.substr(9);
+            }
         }
 
         // TODO: check for leftovers...
@@ -76,8 +94,8 @@ struct Params
     {
        if (!const_name.empty())
        {
-           if (header_file_name.empty()) header_file_name = const_name + ".h";
-           if (source_file_name.empty()) source_file_name = const_name + ".c";
+           if (header_file.empty()) header_file = const_name + ".h";
+           if (source_file.empty()) source_file = const_name + ".c";
        }
     }
 };
@@ -124,8 +142,8 @@ static void generate_files(std::istream &istream, const Params &params)
 {
     using namespace std;
 
-    ofstream hdr { params.header_file_name };
-    ofstream src { params.source_file_name };
+    ofstream hdr { params.header_file };
+    ofstream src { params.source_file };
     
     src << "const unsigned char " << params.const_name << "[] = {\n";
     auto size = convert(istream, src);

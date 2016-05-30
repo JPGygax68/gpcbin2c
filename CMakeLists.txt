@@ -59,3 +59,6 @@ install(TARGETS ${PROJECT_NAME}
 
 install(EXPORT ${PROJECT_NAME}-targets DESTINATION "cmake")
 
+install(FILES
+  "${PROJECT_BINARY_DIR}/InstallFiles/${PROJECT_NAME}-config.cmake"
+  DESTINATION "cmake" COMPONENT dev)

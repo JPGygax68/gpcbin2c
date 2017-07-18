@@ -22,7 +22,15 @@ FOREACH(flag
   STRING(REPLACE "/MD" "/MT" "${flag}" "${${flag}}")
   SET("${flag}" "${${flag}} /EHsc")
 ENDFOREACH()
+
+#------------------------------------------------
+# Conan package manager
+#
  
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
+if (0)
 #------------------------------------------------
 # Export this build tree for use by other CMake projects.
 #
@@ -62,3 +70,4 @@ install(EXPORT ${PROJECT_NAME}-targets DESTINATION "cmake")
 install(FILES
   "${PROJECT_BINARY_DIR}/InstallFiles/${PROJECT_NAME}-config.cmake"
   DESTINATION "cmake" COMPONENT dev)
+endif(0)

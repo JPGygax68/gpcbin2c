@@ -128,6 +128,7 @@ static void convert_data(std::istream &istream, const std::string output_file)
 
     if (!output_file.empty()) 
     {
+        //cout << "dbg: output_file = \"" << output_file << "\"" << std::endl;
         ofs.open(output_file);
         os = &ofs;
     }
@@ -171,6 +172,7 @@ int main(int argc, char *argv[])
         istream *is = nullptr;
         if (!params.input_file.empty()) 
         {
+            ///cout << "dbg: input_file = \"" << params.input_file << "\"" << std::endl;
             ifs.open(params.input_file, ios::binary);
             is = &ifs;
         }

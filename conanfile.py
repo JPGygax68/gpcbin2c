@@ -4,10 +4,11 @@ import os
 
 class GPCBin2CConan(ConanFile):
     name = "gpcbin2c"
+    description = "Converts a binary file to C/C++ source code."
     version = "0.1.1"
     license = "MIT"
-    url = "<Package recipe repository url here, for issues about the package>"
-    settings = "os", "compiler", "build_type", "arch"
+    url = "git@github.com:JPGygax68/gpcbin2c.git"
+    settings = "os", "compiler", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
     generators = "cmake"
@@ -32,7 +33,8 @@ class GPCBin2CConan(ConanFile):
         self.copy("gpcbin2c*", dst="bin", src="Release", keep_path=False)
 
     def package_info(self):
+        self.cpp_info.bindirs = ["bin"]
         self.env_info.path.append(os.path.join(self.package_folder, "bin"))
    
-    def conan_info(self):
-        self.info.settings.build_type = "Release"  # This is an executable tool, build type does not matter
+    #def build_info(self):
+    #    self.info.settings.build_type = "Release"  # This is an executable tool, build type does not matter

@@ -1,19 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
 
-#------------------------------------------------
-# Project + basics
-#
-
 project(gpcbin2c)
 
 add_executable(${PROJECT_NAME} bin2c.cpp)
 
-#------------------------------------------------
-# Conan package manager
-#
- 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+install(TARGETS ${PROJECT_NAME} CONFIGURATIONS Release RUNTIME DESTINATION bin)
+
 
 if (0)
 #------------------------------------------------
